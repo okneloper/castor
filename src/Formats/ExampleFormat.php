@@ -3,11 +3,10 @@
 namespace App\Formats;
 
 use App\Transformations\DateDmyToYmdTransformation;
+use App\Transformations\GenderTransformation;
 use App\Transformations\MetersToCmTransformation;
 use App\Transformations\MonthsToWeeksTransformation;
 use App\Transformations\NoTransformation;
-use App\Transformations\GenderTransformation;
-use App\Transformations\IdTransformation;
 use App\Transformations\YesToIntTransformation;
 
 class ExampleFormat implements Format

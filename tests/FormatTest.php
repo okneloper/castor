@@ -4,7 +4,6 @@ namespace Tests;
 
 use App\Formats\ExampleFormat;
 use App\Formats\FormatFactory;
-use App\Transformations\IdTransformation;
 use App\Transformations\NoTransformation;
 
 class FormatTest extends \Codeception\Test\Unit
