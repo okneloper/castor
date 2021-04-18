@@ -1,7 +1,10 @@
 <?php
 namespace Tests;
 
+use App\Formats\ExampleFormat;
 use App\Io\CsvFileInput;
+use App\Io\CsvFileOutput;
+use App\Io\NamedCsvFileInput;
 use App\Transformer;
 
 class IntegrationTest extends \Codeception\Test\Unit
@@ -27,16 +30,15 @@ class IntegrationTest extends \Codeception\Test\Unit
         $expected_output = __DIR__ . '/data/output.csv';
         $output = $this->output_file;
 
-        $transformer = $this->transformer();
+        // these can be based on a command line argument in future
+        $format = new ExampleFormat();
+        $separator = ';';
 
-        $transformer->transform(new CsvFileInput($input_file), $output);
+        $transformer = new Transformer($format);
+
+        $transformer->transform(new NamedCsvFileInput($input_file, $separator), new CsvFileOutput($output));
 
         $this->assertFileExists($output);
         $this->assertEquals(file_get_contents($expected_output), file_get_contents($output));
-    }
-
-    private function transformer(): Transformer
-    {
-        return new Transformer();
     }
 }
