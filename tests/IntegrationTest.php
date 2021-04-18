@@ -39,6 +39,13 @@ class IntegrationTest extends \Codeception\Test\Unit
         $transformer->transform(new NamedCsvFileInput($input_file, $separator), new CsvFileOutput($output));
 
         $this->assertFileExists($output);
-        $this->assertEquals(file_get_contents($expected_output), file_get_contents($output));
+
+        $expected_output = file_get_contents($expected_output);
+        // switch line endings in the expected output file
+        $expected_output = str_replace("\r\n", "\n", $expected_output);
+        // strip the BOM
+        $expected_output = substr($expected_output, 3);
+
+        $this->assertEquals($expected_output, file_get_contents($output));
     }
 }
