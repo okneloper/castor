@@ -17,8 +17,6 @@ class Transformer
     {
         $map = $this->format->getMappers();
 
-        $result = [];
-
         $header_written = false;
         while ($row = $input->readLine()) {
             $new_row = array_map(function (Transformation $mapper) use ($row) {
@@ -32,7 +30,5 @@ class Transformer
 
             $output->outputRow($new_row);
         }
-
-        // file_put_contents($output_filename, file_get_contents(ROOT . '/tests/data/output.csv'));
     }
 }

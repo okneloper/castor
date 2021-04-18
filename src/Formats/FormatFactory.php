@@ -9,6 +9,7 @@ class FormatFactory
         switch ($format_name) {
             case 'example':
                 return new ExampleFormat();
+                break;
         }
 
         throw new \InvalidArgumentException("Unsupported format [$format_name]");
