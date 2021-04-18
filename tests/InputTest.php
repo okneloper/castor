@@ -3,6 +3,7 @@
 namespace Tests;
 
 use App\Io\CsvFileInput;
+use App\Io\NamedCsvFileInput;
 
 class InputTest extends \Codeception\Test\Unit
 {
@@ -24,5 +25,14 @@ class InputTest extends \Codeception\Test\Unit
         $this->assertEquals([
             'Patient ID', 'Name', 'Gender', 'Length', 'Weight', 'Pregnant', 'Months Pregnant', 'Date of diagnosis',
         ], $headers);
+    }
+
+    public function testCsvWithHeader()
+    {
+        $input = new NamedCsvFileInput(__DIR__ . '/data/input.csv', ';');
+
+        $this->assertEquals([
+            'Patient ID', 'Name', 'Gender', 'Length', 'Weight', 'Pregnant', 'Months Pregnant', 'Date of diagnosis',
+        ], $input->getHeader());
     }
 }

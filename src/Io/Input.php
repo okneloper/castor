@@ -7,5 +7,8 @@ namespace App\Io;
  * @package App\Io
  */
 interface Input {
-    public function readLine(): array;
+    /**
+     * Read a line(row) of data
+     */
+    public function readLine(): array|false;
 }
