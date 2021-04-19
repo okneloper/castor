@@ -31,7 +31,7 @@ Some details of implementation can be found below.
 ## Installation
 PHP 8 is required. 
 ```bash
-composer intall
+composer install
 ```
 
 ## Usage
